@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">		
+		<link rel="stylesheet" href="style.css" />
+		<title>The 6502 | Assembly</title>
+	</head>
+	<body>
+		<div id="main">
+			<h1>6502 Assembly Language</h1>
+			<nav class="navbar navbar-expand-lg bg-ben">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="arch.html">Architecture</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Assembly</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="comp.html">Competitors</a>
+					</li>
+				</ul>
+			</nav>
+			<div id="content">
+				<p>The 6502 assembly language consists of 16 different addressing modes and 69 different instructions.</p>
+				<p>The most frequently used instructions the programmer uses are <code>lda</code>, which loads the accumulator with whatever comes afterwards, and <code>sta</code>, which stores the value of the accumulator at the given address.  These two isntructions (as well as <code>ldx</code>, <code>stx</code>, <code>ldy</code> and <code>sty</code>) prove more than essential in any 6502 program.</p>
+				<p>As an example, if I wanted to put the value 9 at memory location $0320, I would write the code</p>
+				<p class="code_snippet"><code>lda #$09</code></p>
+				<p class="code_snippet"><code>sta $0320</code></p>
+				<p><code>$</code> signifies the number that comes after it is hexadecimal.  <code>%</code> means binary, and nothing means decimal.</p>
+				<p>Of course, the value 9 and memory location 0x0320 would both mean something in context.  To help with remembering those contexts, the programmer can assign labels to number values, for instance:</p>
+				<p class="code_snippet"><code>COLOR_RED = 9</code></p>
+				<p class="code_snippet"><code>box_1_color = $0320</code></p>
+				<p>And then the code would be much more human readable:</p>
+				<p class="code_snippet"><code>lda #COLOR_RED</code></p>
+				<p class="code_snippet"><code>sta box_1_color</code></p>
+				<p>Now say I wanted to make box_1 quickly alternate between 256 different colors.  I could do something like this:</p>
+				<p class="code_snippet"><code>ldx #COLOR_RED</code></p>
+				<p class="code_snippet"><code>.loop:</code></p>
+				<p class="code_snippet"><code>stx box_1_color</code></p>
+				<p class="code_snippet"><code>inx</code></p>
+				<p class="code_snippet"><code>jmp .loop</code></p>
+				<p><code>inx</code> means increase the value of X, and <code>jmp</code> just tells the computer to jump to the given location.</p>
+				<p>As you might expect, that's a big generalization of how actual functioning code might look; I don't think there's any computer out there that would turn just that into something nice to look at.  This is just a basic look at what 6502 assembly looks like.</p>
+			</div>
+			<div id="footer">
+				<p>https://github.com/taylorplewe/tp260cp1</p>
+			</div>
+		</div>
+	</body>
+</html>
